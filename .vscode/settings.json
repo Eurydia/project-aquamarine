@@ -1,8 +1,5 @@
 {
   "eslint.validate": ["javascript", "typescript", "typescriptreact"],
   "js/ts.autoClosingTags.enabled": true,
-  "js/ts.preferences.autoImportSpecifierExcludeRegexes": [
-    "^@mui/material$",
-    "^@mui/icons-material$"
-  ]
+  "js/ts.preferences.autoImportSpecifierExcludeRegexes": ["^@mui/material$"]
 }

@@ -1,5 +1,4 @@
-import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
-import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
+import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
@@ -18,11 +17,7 @@ export const Collapsible: FC<CollapsibleProps> = (props) => {
     setOpen(!open);
   };
 
-  const expandIcon = open ? (
-    <ExpandMoreRoundedIcon />
-  ) : (
-    <ExpandLessRoundedIcon />
-  );
+  const expandIcon = open ? <ExpandMoreRounded /> : <ExpandLessRounded />;
 
   return (
     <Fragment>

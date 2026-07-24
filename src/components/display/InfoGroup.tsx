@@ -1,13 +1,4 @@
 import { Facility, Proliferator, Recipe } from "@eurydos/dsp-item-registry";
-import AbcRounded from "@mui/icons-material/AbcRounded";
-import AddRounded from "@mui/icons-material/AddRounded";
-import BoltRounded from "@mui/icons-material/BoltRounded";
-import CategoryRounded from "@mui/icons-material/CategoryRounded";
-import DataSaverOffRounded from "@mui/icons-material/DataSaverOffRounded";
-import FactoryRounded from "@mui/icons-material/FactoryRounded";
-import RemoveRounded from "@mui/icons-material/RemoveRounded";
-import SpeedRounded from "@mui/icons-material/SpeedRounded";
-import UsbRounded from "@mui/icons-material/UsbRounded";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
@@ -19,6 +10,17 @@ import { FC, useRef } from "react";
 import { formatNumber } from "~/core/formatting";
 import { EditorFormData, PlacementData } from "~/types/query";
 import { PaddedPaper } from "../surfaces/PaddedPaper";
+import {
+  FactoryRounded,
+  SpeedRounded,
+  DataSaverOffRounded,
+  RemoveRounded,
+  AddRounded,
+  BoltRounded,
+  AbcRounded,
+  CategoryRounded,
+  UsbRounded,
+} from "@mui/icons-material";
 
 type PlacementInfoProps = {
   placement: PlacementData;

@@ -1,13 +1,13 @@
-import RestartAltRoundedIcon from "@mui/icons-material/RestartAltRounded";
+import { RestartAltRounded as RestartAltRoundedIcon } from "@mui/icons-material";
 import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
 import { FC, SyntheticEvent } from "react";
 import { toIconURL } from "~/assets/icon";
 import { EditorFormData, EditorFormHandlers } from "~/types/query";
 import { StyledTextField } from "../styled/StyledTextField";
-import IconButton from "@mui/material/IconButton";
 import { PaddedPaper } from "../surfaces/PaddedPaper";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 
 type ComputeFormProps = {
   data: EditorFormData;

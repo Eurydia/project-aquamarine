@@ -1,8 +1,8 @@
-import RestartAltRoundedIcon from "@mui/icons-material/RestartAltRounded";
 import { FC, ReactNode } from "react";
 import { StyledTextField } from "./StyledTextField";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
+import { RestartAltRounded } from "@mui/icons-material";
 
 type SorterFieldProps = {
   prefix?: ReactNode;
@@ -35,7 +35,7 @@ export const StyledNumberField: FC<SorterFieldProps> = (props) => {
         disableTouchRipple
         size="small"
         color="primary"
-        children={<RestartAltRoundedIcon />}
+        children={<RestartAltRounded />}
         onClick={handleReset}
       />
     </Stack>

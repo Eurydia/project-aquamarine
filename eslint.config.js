@@ -13,7 +13,7 @@ export default defineConfig(
 				{
 					patterns: [
 						{
-							regex: "^@mui/[^/]+$",
+							regex: "^@mui/material[^/]+$",
 							message:
 								"Do not use MUI barrel imports. Import from the component path instead.",
 						},
