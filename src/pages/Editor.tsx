@@ -1,7 +1,5 @@
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 import { FC } from "react";
-import { ComputeForm } from "~/components/ComputeForm";
-import { ConfigForm } from "~/components/ConfigForm";
 import { FlowTable } from "~/components/display/FlowTable";
 import { InfoGroup } from "~/components/display/InfoGroup";
 import { PowerUsageTable } from "~/components/display/PowerUsageTable";
@@ -10,6 +8,8 @@ import { computePlacement } from "~/core/solver/solverPlacement";
 import { computePowerUsage } from "~/core/solver/solverPowerUsage";
 import { useEditorForm } from "~/hooks/useEditorForm";
 import { Layout } from "~/components/layouts/Layout";
+import { ComputeForm } from "~/components/forms/ComputeForm";
+import { ConfigForm } from "~/components/forms/ConfigForm";
 
 export const Editor: FC = () => {
   const [data, handlers] = useEditorForm();

@@ -1,8 +1,9 @@
-import { RestartAltRounded } from "@mui/icons-material";
-import { IconButton, Stack } from "@mui/material";
+import RestartAltRoundedIcon from "@mui/icons-material/RestartAltRounded";
 import { FC } from "react";
 import { toIconURL } from "~/assets/icon";
 import { StyledTextField } from "../styled/StyledTextField";
+import Stack from "@mui/material/Stack";
+import IconButton from "@mui/material/IconButton";
 
 type SorterFieldProps = {
   value: string;
@@ -31,7 +32,7 @@ export const SorterField: FC<SorterFieldProps> = (props) => {
         disableRipple
         size="small"
         color="primary"
-        children={<RestartAltRounded />}
+        children={<RestartAltRoundedIcon />}
         onClick={handleReset}
       />
     </Stack>

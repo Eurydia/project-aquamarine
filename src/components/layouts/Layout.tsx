@@ -1,4 +1,7 @@
-import { Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import useTheme from "@mui/material/styles/useTheme";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { FC, ReactNode } from "react";
 import { PaddedPaper } from "~/components/surfaces/PaddedPaper";
 

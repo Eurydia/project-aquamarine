@@ -1,8 +1,8 @@
 import { ThemeProvider } from "@emotion/react";
-import { CssBaseline } from "@mui/material";
 import { FC } from "react";
 import { Editor } from "~/pages/Editor";
 import { theme } from "./theme";
+import CssBaseline from "@mui/material/CssBaseline";
 
 export const App: FC = () => {
   return (

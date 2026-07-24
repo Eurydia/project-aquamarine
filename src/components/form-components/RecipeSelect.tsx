@@ -1,11 +1,8 @@
 import { Recipe } from "@eurydos/dsp-item-registry";
-import {
-  ListItemIcon,
-  ListItemText,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { FC, useRef } from "react";
 import { getRecipe, getRecipeAll } from "~/assets/get";
 import { toIconURL } from "~/assets/icon";

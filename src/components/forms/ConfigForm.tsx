@@ -1,5 +1,4 @@
 import { GAME_VERSION } from "@eurydos/dsp-item-registry";
-import { Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import { toIconURL } from "~/assets/icon";
 import { Collapsible } from "~/components/surfaces/Collapsible";
@@ -9,7 +8,9 @@ import { ProlfieratorSprayCountField } from "~/components/form-components/Prolfi
 import { ProliferatorSelect } from "~/components/form-components/ProliferatorSelect";
 import { RecipeSelect } from "~/components/form-components/RecipeSelect";
 import { EditorFormData, EditorFormHandlers } from "~/types/query";
-import { StyledNumberField } from "./styled/StyledNumberField";
+import { StyledNumberField } from "../styled/StyledNumberField";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 export type ConfigFormProps = {
   data: EditorFormData;

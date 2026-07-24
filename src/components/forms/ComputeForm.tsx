@@ -1,10 +1,13 @@
-import { RestartAltRounded } from "@mui/icons-material";
-import { Grid, IconButton, Tab, Tabs } from "@mui/material";
+import RestartAltRoundedIcon from "@mui/icons-material/RestartAltRounded";
+import Grid from "@mui/material/Grid";
 import { FC, SyntheticEvent } from "react";
 import { toIconURL } from "~/assets/icon";
 import { EditorFormData, EditorFormHandlers } from "~/types/query";
-import { PaddedPaper } from "./PaddedPaper";
-import { StyledTextField } from "./styled/StyledTextField";
+import { StyledTextField } from "../styled/StyledTextField";
+import IconButton from "@mui/material/IconButton";
+import { PaddedPaper } from "../surfaces/PaddedPaper";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
 type ComputeFormProps = {
   data: EditorFormData;
@@ -40,7 +43,7 @@ export const ComputeForm: FC<ComputeFormProps> = (props) => {
       <IconButton
         size="small"
         color="primary"
-        children={<RestartAltRounded />}
+        children={<RestartAltRoundedIcon />}
         onClick={() => fn(label, "")}
       />
     </Grid>

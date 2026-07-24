@@ -124,16 +124,15 @@ const computeFacilitiesPerArray = (config: ConfigFormData) => {
 };
 
 export const computePlacement = (data: EditorFormData): PlacementData => {
-  let facilitiesNeeded = 0;
-  if (data.computeMode === "constraint") {
-    facilitiesNeeded = computeFacilitiesNeededConstraint(data, data.constraint);
-  } else {
-    facilitiesNeeded = computeFacilitiesNeededCapacity(data, data.capacity);
-  }
+  let facilitiesNeeded =
+    data.computeMode === "constraint"
+      ? computeFacilitiesNeededConstraint(data, data.constraint)
+      : computeFacilitiesNeededCapacity(data, data.capacity);
+
   const facilitiesPerArray = computeFacilitiesPerArray(data);
 
   let arraysNeeded = 0;
-  let leftoverFacilities = 0;
+  const leftoverFacilities = 0;
   if (facilitiesPerArray > 0) {
     arraysNeeded = Math.floor(facilitiesNeeded / facilitiesPerArray);
     facilitiesNeeded = facilitiesNeeded - arraysNeeded * facilitiesPerArray;

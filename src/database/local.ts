@@ -79,7 +79,7 @@ const getLocalString = <T>(
  * Returns false if a key is missing or an unexpected key is found.
  */
 const verifyRecordKeys = (
-  record: Record<string, any>,
+  record: Record<string, unknown>,
   keys: string[],
 ): boolean => {
   for (const k of keys) {

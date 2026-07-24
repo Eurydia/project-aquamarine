@@ -1,5 +1,6 @@
-import { RestartAltRounded } from "@mui/icons-material";
-import { IconButton, Stack } from "@mui/material";
+import RestartAltRoundedIcon from "@mui/icons-material/RestartAltRounded";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
 import { FC } from "react";
 import { toIconURL } from "~/assets/icon";
 import { StyledTextField } from "../styled/StyledTextField";
@@ -32,7 +33,7 @@ export const FlowrateField: FC<FlowrateFieldProps> = (props) => {
         disableRipple
         size="small"
         color="primary"
-        children={<RestartAltRounded />}
+        children={<RestartAltRoundedIcon />}
         onClick={handleReset}
       />
     </Stack>

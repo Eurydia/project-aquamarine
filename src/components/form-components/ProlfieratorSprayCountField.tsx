@@ -1,7 +1,8 @@
-import { RestartAltRounded } from "@mui/icons-material";
-import { IconButton, Stack } from "@mui/material";
 import { FC } from "react";
 import { StyledTextField } from "../styled/StyledTextField";
+import RestartAltRoundedIcon from "@mui/icons-material/RestartAltRounded";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
 
 type ProlfieratorSprayCountFieldProps = {
   value: string;
@@ -34,7 +35,7 @@ export const ProlfieratorSprayCountField: FC<
         disabled={disabled}
         size="small"
         color="primary"
-        children={<RestartAltRounded />}
+        children={<RestartAltRoundedIcon />}
         onClick={handleReset}
       />
     </Stack>

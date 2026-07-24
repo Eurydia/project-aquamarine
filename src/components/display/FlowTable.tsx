@@ -1,10 +1,3 @@
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
 import { FC } from "react";
 import { getProliferator } from "~/assets/get";
 import { proliferatorToIconURL, toIconURL } from "~/assets/icon";
@@ -12,6 +5,12 @@ import { PaddedPaper } from "~/components/surfaces/PaddedPaper";
 import { StyledTableHeadCell } from "~/components/styled/StyledTableHeadCell";
 import { formatNumber } from "~/core/formatting";
 import { FlowData, PlacementData } from "~/types/query";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
 
 type StyledTableRowProps = {
   label: string;
