@@ -1,5 +1,9 @@
 import { tryParseIntClamp } from "~/core/parsing";
-import { ConfigFormData, EditorFormData, FlowData } from "~/types/query";
+import {
+  Type$ConfigFormData,
+  Type$EditorFormData,
+  FlowData,
+} from "~/types/query";
 
 /**
  * @version 2.6.1
@@ -7,7 +11,7 @@ import { ConfigFormData, EditorFormData, FlowData } from "~/types/query";
  * If the proliferator is set, its usage splits into two entries, which are materials and products.
  */
 const computeMaterialPerMinutePerFacility = (
-  configFormData: ConfigFormData,
+  configFormData: Type$ConfigFormData,
 ): Record<string, number> => {
   const { facility, recipe, proliferator, proliferatorSprayCount } =
     configFormData;
@@ -48,7 +52,7 @@ const computeMaterialPerMinutePerFacility = (
 };
 
 const computeProductionPerMinutePerFacility = (
-  configFormData: ConfigFormData,
+  configFormData: Type$ConfigFormData,
 ): Record<string, number> => {
   const { facility: f, recipe: r, proliferator: p } = configFormData;
   const { cycleTimeSecond, productRecord } = r;
@@ -63,7 +67,7 @@ const computeProductionPerMinutePerFacility = (
   return result;
 };
 
-export const computeFlow = (formData: EditorFormData): FlowData => {
+export const computeFlow = (formData: Type$EditorFormData): FlowData => {
   const materialFlowPerMinutePerFacility =
     computeMaterialPerMinutePerFacility(formData);
 

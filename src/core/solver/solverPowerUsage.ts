@@ -1,13 +1,17 @@
 import { getSorter } from "~/assets/get";
 import { tryParseIntClamp } from "~/core/parsing";
-import { ConfigFormData, EditorFormData, PowerUsageData } from "~/types/query";
+import {
+  Type$ConfigFormData,
+  Type$EditorFormData,
+  PowerUsageData,
+} from "~/types/query";
 
 /**
  * @version 2.6.1
  * @description
  * Computes the idle power usage of a single facility, including power usage of attached sorters.
  */
-const computeIdleUsageMWPerFacility = (data: ConfigFormData) => {
+const computeIdleUsageMWPerFacility = (data: Type$ConfigFormData) => {
   const { sorter, facility: f } = data;
   let usageMW = 0;
   for (const k in sorter) {
@@ -26,7 +30,7 @@ const computeIdleUsageMWPerFacility = (data: ConfigFormData) => {
  * @description
  * Computes the work power usage of a single facility, including power usage of attached sorters.
  */
-const computeWorkUsageMWPerFacility = (data: ConfigFormData) => {
+const computeWorkUsageMWPerFacility = (data: Type$ConfigFormData) => {
   const { facility: f, proliferator: p, sorter } = data;
   let usageMW = 0;
   for (const k in sorter) {
@@ -43,7 +47,9 @@ const computeWorkUsageMWPerFacility = (data: ConfigFormData) => {
   return facilityWorkConsumptionMW + usageMW;
 };
 
-export const computePowerUsage = (data: EditorFormData): PowerUsageData => {
+export const computePowerUsage = (
+  data: Type$EditorFormData,
+): PowerUsageData => {
   const idleUsageMWPerFacility = computeIdleUsageMWPerFacility(data);
   const workUsageMWPerFacility = computeWorkUsageMWPerFacility(data);
   return {

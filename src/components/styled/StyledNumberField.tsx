@@ -9,17 +9,10 @@ type SorterFieldProps = {
   suffix?: string;
   value: string;
   label: string;
-  onChange: (k: string, v: string) => void;
+  onChange: (v: string) => void;
 };
 export const StyledNumberField: FC<SorterFieldProps> = (props) => {
   const { prefix, suffix, value, label, onChange } = props;
-
-  const handleReset = () => {
-    onChange(label, "");
-  };
-  const handleChange = (k: string) => {
-    onChange(label, k);
-  };
 
   return (
     <Stack direction="row" alignItems="center">
@@ -27,7 +20,7 @@ export const StyledNumberField: FC<SorterFieldProps> = (props) => {
         label={label}
         maxLength={6}
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
         suffix={suffix}
         prefix={prefix}
       />
@@ -36,7 +29,7 @@ export const StyledNumberField: FC<SorterFieldProps> = (props) => {
         size="small"
         color="primary"
         children={<RestartAltRounded />}
-        onClick={handleReset}
+        onClick={() => onChange("")}
       />
     </Stack>
   );

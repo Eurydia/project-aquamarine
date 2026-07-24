@@ -8,7 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import { FC, useRef } from "react";
 import { formatNumber } from "~/core/formatting";
-import { EditorFormData, PlacementData } from "~/types/query";
+import { Type$EditorFormData, PlacementData } from "~/types/query";
 import { PaddedPaper } from "../surfaces/PaddedPaper";
 import {
   FactoryRounded,
@@ -226,7 +226,7 @@ const FacilityInfo: FC<FacilityInfoProps> = (props) => {
 
 type InfoGroupProps = {
   placement: PlacementData;
-  data: EditorFormData;
+  data: Type$EditorFormData;
 };
 export const InfoGroup: FC<InfoGroupProps> = (props) => {
   const { data, placement } = props;

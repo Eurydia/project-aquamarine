@@ -1,5 +1,10 @@
 import { tryParseIntClamp } from "~/core/parsing";
-import { ConfigFormData, EditorFormData, PlacementData } from "~/types/query";
+import {
+  Type$ConfigFormData,
+  Type$EditorFormData,
+  PlacementData,
+  ComputeMode,
+} from "~/types/query";
 
 /**
  * @version 2.6.1
@@ -9,7 +14,7 @@ import { ConfigFormData, EditorFormData, PlacementData } from "~/types/query";
  * Tries to solve every desired product which means some products may be overproduced to match the capacity.
  */
 const computeFacilitiesNeededCapacity = (
-  config: ConfigFormData,
+  config: Type$ConfigFormData,
   capacity: Record<string, string>,
 ) => {
   const { facility, proliferator, recipe } = config;
@@ -46,7 +51,7 @@ const computeFacilitiesNeededCapacity = (
  * The result depends on the limiting factor of each recipe.
  */
 const computeFacilitiesNeededConstraint = (
-  config: ConfigFormData,
+  config: Type$ConfigFormData,
   constraint: Record<string, string>,
 ) => {
   const { facility, recipe, proliferator } = config;
@@ -81,7 +86,7 @@ const computeFacilitiesNeededConstraint = (
  * @description
  * Computes how many facilities can be placed in a single array.
  */
-const computeFacilitiesPerArray = (config: ConfigFormData) => {
+const computeFacilitiesPerArray = (config: Type$ConfigFormData) => {
   const { flowrate, facility, recipe, proliferator } = config;
 
   const parsed: Record<string, number> = {};
@@ -123,9 +128,10 @@ const computeFacilitiesPerArray = (config: ConfigFormData) => {
   return Math.min(matBottleNeck, prodBottleNeck);
 };
 
-export const computePlacement = (data: EditorFormData): PlacementData => {
+export const computePlacement = (data: Type$EditorFormData): PlacementData => {
+  console.debug(data);
   let facilitiesNeeded =
-    data.computeMode === "constraint"
+    data.computeMode === ComputeMode.CONSTRAINT
       ? computeFacilitiesNeededConstraint(data, data.constraint)
       : computeFacilitiesNeededCapacity(data, data.capacity);
 

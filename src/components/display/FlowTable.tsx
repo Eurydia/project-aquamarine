@@ -79,30 +79,6 @@ export const FlowTable: FC<FlowTableProps> = (props) => {
     data;
   const { facilitiesNeeded, facilitiesPerArray } = placement;
 
-  const renderedMaterialRows = Object.entries(
-    materialFlowPerMinutePerFacility,
-  ).map(([label, value], index) => (
-    <StyledTableRow
-      key={`m-${label}-${index}`}
-      label={label}
-      perFacility={-value}
-      perArray={-value * facilitiesNeeded}
-      perTotal={-value * facilitiesPerArray}
-    />
-  ));
-
-  const renderedProductRows = Object.entries(
-    productFlowPerMinutePerFacility,
-  ).map(([label, value], index) => (
-    <StyledTableRow
-      key={`prod-${label}-${index}`}
-      label={label}
-      perFacility={value}
-      perArray={value * facilitiesNeeded}
-      perTotal={value * facilitiesPerArray}
-    />
-  ));
-
   return (
     <PaddedPaper square elevation={2}>
       <TableContainer>
@@ -111,8 +87,28 @@ export const FlowTable: FC<FlowTableProps> = (props) => {
             <StyledTableHead />
           </TableHead>
           <TableBody>
-            {renderedMaterialRows}
-            {renderedProductRows}
+            {Object.entries(materialFlowPerMinutePerFacility).map(
+              ([label, value], index) => (
+                <StyledTableRow
+                  key={`m-${label}-${index}`}
+                  label={label}
+                  perFacility={-value}
+                  perArray={-value * facilitiesNeeded}
+                  perTotal={-value * facilitiesPerArray}
+                />
+              ),
+            )}
+            {Object.entries(productFlowPerMinutePerFacility).map(
+              ([label, value], index) => (
+                <StyledTableRow
+                  key={`prod-${label}-${index}`}
+                  label={label}
+                  perFacility={value}
+                  perArray={value * facilitiesNeeded}
+                  perTotal={value * facilitiesPerArray}
+                />
+              ),
+            )}
           </TableBody>
         </Table>
       </TableContainer>

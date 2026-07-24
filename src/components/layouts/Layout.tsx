@@ -27,10 +27,10 @@ export const Layout: FC<LayoutProps> = (props) => {
   return (
     <Paper square elevation={0}>
       <Grid container columns={10}>
-        <Grid item md padding={4} height="100vh" overflow="auto">
+        <Grid item md padding={4}>
           {slotMain}
         </Grid>
-        <Grid item md={3} height="100vh" overflow="auto">
+        <Grid item md={3}>
           <PaddedPaper square elevation={2}>
             {slotSide}
           </PaddedPaper>

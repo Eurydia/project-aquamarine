@@ -8,8 +8,8 @@ import { getProliferator, getProliferatorAll } from "~/assets/get";
 import { proliferatorToIconURL } from "~/assets/icon";
 
 type ProlfieratorSelectProps = {
-  value: Proliferator;
-  onChange: (value: Proliferator) => void;
+  value: Exclude<Proliferator, "mode"> & { mode: string };
+  onChange: (value: Exclude<Proliferator, "mode"> & { mode: string }) => void;
   speedupOnly: boolean;
 };
 export const ProliferatorSelect: FC<ProlfieratorSelectProps> = (props) => {
@@ -18,7 +18,9 @@ export const ProliferatorSelect: FC<ProlfieratorSelectProps> = (props) => {
   const { current: options } = useRef(getProliferatorAll());
 
   const handleChange = (e: SelectChangeEvent<string>) => {
-    const next = getProliferator(e.target.value);
+    const next = getProliferator(e.target.value) as
+      | (Exclude<Proliferator, "mode"> & { mode: string })
+      | undefined;
     if (next === undefined) {
       return;
     }
