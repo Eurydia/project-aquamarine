@@ -3,15 +3,12 @@
  * @description
  * Parses a JSON string, return undefined in case of SyntaxError.
  */
-export const tryParse = (
-	jsonString: string,
-): unknown | undefined => {
-	try {
-		return JSON.parse(jsonString);
-	} catch (e) {
-		console.warn(e);
-		return undefined;
-	}
+export const tryParse = (jsonString: string): unknown | undefined => {
+  try {
+    return JSON.parse(jsonString);
+  } catch {
+    return undefined;
+  }
 };
 
 /**
@@ -21,18 +18,18 @@ export const tryParse = (
  * Returns the minimum value if the string is not a number.
  */
 export const tryParseIntClamp = (
-	value: string,
-	minValue: number,
-	maxValue: number,
+  value: string,
+  minValue: number,
+  maxValue: number,
 ): number => {
-	const p = tryParseInt(value) ?? minValue;
-	if (p > maxValue) {
-		return maxValue;
-	}
-	if (p < minValue) {
-		return minValue;
-	}
-	return p;
+  const p = tryParseInt(value) ?? minValue;
+  if (p > maxValue) {
+    return maxValue;
+  }
+  if (p < minValue) {
+    return minValue;
+  }
+  return p;
 };
 
 /**
@@ -41,12 +38,10 @@ export const tryParseIntClamp = (
  * Parses a string to an integer.
  * If the string is invalid, the it returns null.
  */
-export const tryParseInt = (
-	value: string,
-): number | null => {
-	const p = Number.parseInt(value);
-	if (Number.isNaN(p)) {
-		return null;
-	}
-	return p;
+export const tryParseInt = (value: string): number | null => {
+  const p = Number.parseInt(value);
+  if (Number.isNaN(p)) {
+    return null;
+  }
+  return p;
 };

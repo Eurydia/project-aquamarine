@@ -36,7 +36,6 @@ export const ConfigForm = AppFormHooks.withFieldGroup({
               onChange: ({ value }) => {
                 const nextRecipe = getRecipeWithType(value.recipeType);
                 if (!nextRecipe) {
-                  console.warn(`Cannot find recipe for ${value.recipeType}`);
                   return;
                 }
                 group.setFieldValue("recipe", nextRecipe);
@@ -66,9 +65,6 @@ export const ConfigForm = AppFormHooks.withFieldGroup({
                         ProliferatorMode.PRODUCTION_SPEEDUP,
                       );
                       if (nextProlif === undefined) {
-                        console.warn(
-                          "Cannot find production speedup proliferator",
-                        );
                         return;
                       }
                       group.setFieldValue(
@@ -114,7 +110,6 @@ export const ConfigForm = AppFormHooks.withFieldGroup({
               }}
             >
               {({ flowrate, facility }) => {
-                console.debug(flowrate);
                 return (
                   <group.Field name="flowrate">
                     {(f) =>

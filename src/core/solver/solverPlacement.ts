@@ -18,12 +18,16 @@ const computeFacilitiesNeededCapacity = (
   capacity: Record<string, string>,
 ) => {
   const { facility, proliferator, recipe } = config;
-  const parsed: Record<string, number> = {};
-  for (const [k, v] of Object.entries(capacity)) {
-    parsed[k] = tryParseIntClamp(v, 0, Number.MAX_SAFE_INTEGER);
+  const capacityLookup: Record<string, number> = {};
+  for (const [k, capacityFlowrate] of Object.entries(capacity)) {
+    capacityLookup[k] = tryParseIntClamp(
+      capacityFlowrate,
+      0,
+      Number.MAX_SAFE_INTEGER,
+    );
   }
 
-  if (Object.values(parsed).every((value) => value === 0)) {
+  if (Object.values(capacityLookup).every((value) => value === 0)) {
     return 0;
   }
 
@@ -33,9 +37,12 @@ const computeFacilitiesNeededCapacity = (
     proliferator.cycleMultiplier;
 
   let result = 0;
-  for (const [k, v] of Object.entries(recipe.productRecord)) {
-    const itemFlowrate = v * cyclesPerMinute * proliferator.productMultiplier;
-    const currNeeded = parsed[k] / itemFlowrate;
+  for (const [item, itemProducedPerCycle] of Object.entries(
+    recipe.productRecord,
+  )) {
+    const itemProducedPerMinute =
+      itemProducedPerCycle * cyclesPerMinute * proliferator.productMultiplier;
+    const currNeeded = capacityLookup[item] / itemProducedPerMinute;
     if (currNeeded > result) {
       result = currNeeded;
     }
@@ -56,12 +63,12 @@ const computeFacilitiesNeededConstraint = (
 ) => {
   const { facility, recipe, proliferator } = config;
 
-  const parsed: Record<string, number> = {};
+  const constraintLookup: Record<string, number> = {};
   for (const [k, v] of Object.entries(constraint)) {
-    parsed[k] = tryParseIntClamp(v, 0, Number.MAX_SAFE_INTEGER);
+    constraintLookup[k] = tryParseIntClamp(v, 0, Number.MAX_SAFE_INTEGER);
   }
 
-  if (Object.values(parsed).every((value) => value === 0)) {
+  if (Object.values(constraintLookup).every((value) => value === 0)) {
     return 0;
   }
 
@@ -71,9 +78,11 @@ const computeFacilitiesNeededConstraint = (
     proliferator.cycleMultiplier;
 
   let result = 0;
-  for (const [k, v] of Object.entries(recipe.materialRecord)) {
-    const itemFlowrate = v * cyclesPerMinute;
-    const currNeeded = parsed[k] / itemFlowrate;
+  for (const [item, itemConsumedPerCycle] of Object.entries(
+    recipe.materialRecord,
+  )) {
+    const itemConsumedPerMinute = itemConsumedPerCycle * cyclesPerMinute;
+    const currNeeded = constraintLookup[item] / itemConsumedPerMinute;
     if ((currNeeded > 0 && result === 0) || currNeeded < result) {
       result = currNeeded;
     }
@@ -89,9 +98,13 @@ const computeFacilitiesNeededConstraint = (
 const computeFacilitiesPerArray = (config: Type$ConfigFormData) => {
   const { flowrate, facility, recipe, proliferator } = config;
 
-  const parsed: Record<string, number> = {};
+  const flowrateLookup: Record<string, number> = {};
   for (const k in flowrate) {
-    parsed[k] = tryParseIntClamp(flowrate[k], 0, Number.MAX_SAFE_INTEGER);
+    flowrateLookup[k] = tryParseIntClamp(
+      flowrate[k],
+      0,
+      Number.MAX_SAFE_INTEGER,
+    );
   }
 
   const cyclesPerMinute =
@@ -101,8 +114,9 @@ const computeFacilitiesPerArray = (config: Type$ConfigFormData) => {
 
   let matBottleNeck = 0;
   for (const k in recipe.materialRecord) {
-    const itemFlowrate = parsed[k];
-    const currBottleNeck = itemFlowrate / (parsed[k] * cyclesPerMinute);
+    const itemFlowrate = flowrateLookup[k];
+    const currBottleNeck =
+      itemFlowrate / (recipe.materialRecord[k] * cyclesPerMinute);
     if (
       (matBottleNeck === 0 && currBottleNeck > 0) ||
       currBottleNeck < matBottleNeck
@@ -113,10 +127,12 @@ const computeFacilitiesPerArray = (config: Type$ConfigFormData) => {
 
   let prodBottleNeck = 0;
   for (const k in recipe.productRecord) {
-    const itemFlowrate = parsed[k];
+    const itemFlowrate = flowrateLookup[k];
     const currBottleNeck =
       itemFlowrate /
-      (parsed[k] * cyclesPerMinute * proliferator.productMultiplier);
+      (recipe.productRecord[k] *
+        cyclesPerMinute *
+        proliferator.productMultiplier);
     if (
       (prodBottleNeck === 0 && currBottleNeck > 0) ||
       currBottleNeck < prodBottleNeck
@@ -129,8 +145,7 @@ const computeFacilitiesPerArray = (config: Type$ConfigFormData) => {
 };
 
 export const computePlacement = (data: Type$EditorFormData): PlacementData => {
-  console.debug(data);
-  let facilitiesNeeded =
+  const facilitiesNeeded =
     data.computeMode === ComputeMode.CONSTRAINT
       ? computeFacilitiesNeededConstraint(data, data.constraint)
       : computeFacilitiesNeededCapacity(data, data.capacity);
@@ -138,10 +153,10 @@ export const computePlacement = (data: Type$EditorFormData): PlacementData => {
   const facilitiesPerArray = computeFacilitiesPerArray(data);
 
   let arraysNeeded = 0;
-  const leftoverFacilities = 0;
+  let leftoverFacilities = 0;
   if (facilitiesPerArray > 0) {
     arraysNeeded = Math.floor(facilitiesNeeded / facilitiesPerArray);
-    facilitiesNeeded = facilitiesNeeded - arraysNeeded * facilitiesPerArray;
+    leftoverFacilities = facilitiesNeeded - arraysNeeded * facilitiesPerArray;
   }
   return {
     facilitiesNeeded,
