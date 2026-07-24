@@ -2,14 +2,14 @@ import { Stack } from "@mui/material";
 import { FC } from "react";
 import { ComputeForm } from "~/components/ComputeForm";
 import { ConfigForm } from "~/components/ConfigForm";
-import { FlowTable } from "~/components/FlowTable";
-import { InfoGroup } from "~/components/InfoGroup";
-import { PowerUsageTable } from "~/components/PowerUsageTable";
+import { FlowTable } from "~/components/display/FlowTable";
+import { InfoGroup } from "~/components/display/InfoGroup";
+import { PowerUsageTable } from "~/components/display/PowerUsageTable";
 import { computeFlow } from "~/core/solver/solverFlow";
 import { computePlacement } from "~/core/solver/solverPlacement";
 import { computePowerUsage } from "~/core/solver/solverPowerUsage";
 import { useEditorForm } from "~/hooks/useEditorForm";
-import { Layout } from "~/layouts/Layout";
+import { Layout } from "~/components/layouts/Layout";
 
 export const Editor: FC = () => {
   const [data, handlers] = useEditorForm();

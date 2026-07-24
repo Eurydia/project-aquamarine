@@ -1,4 +1,3 @@
-import {
   Table,
   TableBody,
   TableCell,
@@ -9,8 +8,8 @@ import {
 import { FC } from "react";
 import { getProliferator } from "~/assets/get";
 import { proliferatorToIconURL, toIconURL } from "~/assets/icon";
-import { PaddedPaper } from "~/components/PaddedPaper";
-import { StyledTableHeadCell } from "~/components/StyledTableHeadCell";
+import { PaddedPaper } from "~/components/surfaces/PaddedPaper";
+import { StyledTableHeadCell } from "~/components/styled/StyledTableHeadCell";
 import { formatNumber } from "~/core/formatting";
 import { FlowData, PlacementData } from "~/types/query";
 

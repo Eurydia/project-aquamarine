@@ -2,14 +2,14 @@ import { GAME_VERSION } from "@eurydos/dsp-item-registry";
 import { Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import { toIconURL } from "~/assets/icon";
-import { Collapsible } from "~/components/Collapsible";
-import { FacilitySelect } from "~/components/FacilitySelect";
-import { FlowrateField } from "~/components/FlowrateField";
-import { ProlfieratorSprayCountField } from "~/components/ProlfieratorSprayCountField";
-import { ProliferatorSelect } from "~/components/ProliferatorSelect";
-import { RecipeSelect } from "~/components/RecipeSelect";
+import { Collapsible } from "~/components/surfaces/Collapsible";
+import { FacilitySelect } from "~/components/form-components/FacilitySelect";
+import { FlowrateField } from "~/components/form-components/FlowrateField";
+import { ProlfieratorSprayCountField } from "~/components/form-components/ProlfieratorSprayCountField";
+import { ProliferatorSelect } from "~/components/form-components/ProliferatorSelect";
+import { RecipeSelect } from "~/components/form-components/RecipeSelect";
 import { EditorFormData, EditorFormHandlers } from "~/types/query";
-import { StyledNumberField } from "./StyledNumberField";
+import { StyledNumberField } from "./styled/StyledNumberField";
 
 export type ConfigFormProps = {
   data: EditorFormData;

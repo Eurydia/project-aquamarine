@@ -2,7 +2,7 @@ import { RestartAltRounded } from "@mui/icons-material";
 import { IconButton, Stack } from "@mui/material";
 import { FC } from "react";
 import { toIconURL } from "~/assets/icon";
-import { StyledTextField } from "./StyledTextField";
+import { StyledTextField } from "../styled/StyledTextField";
 
 type SorterFieldProps = {
   value: string;

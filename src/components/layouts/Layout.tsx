@@ -1,6 +1,6 @@
 import { Grid, Paper, useMediaQuery, useTheme } from "@mui/material";
 import { FC, ReactNode } from "react";
-import { PaddedPaper } from "~/components/PaddedPaper";
+import { PaddedPaper } from "~/components/surfaces/PaddedPaper";
 
 type LayoutProps = {
   slotSide: ReactNode;

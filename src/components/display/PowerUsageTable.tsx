@@ -7,8 +7,8 @@ import {
   TableRow,
 } from "@mui/material";
 import { FC } from "react";
-import { PaddedPaper } from "~/components/PaddedPaper";
-import { StyledTableHeadCell } from "~/components/StyledTableHeadCell";
+import { PaddedPaper } from "~/components/surfaces/PaddedPaper";
+import { StyledTableHeadCell } from "~/components/styled/StyledTableHeadCell";
 import { formatNumber } from "~/core/formatting";
 import { PlacementData, PowerUsageData } from "~/types/query";
 

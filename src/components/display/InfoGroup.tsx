@@ -22,7 +22,7 @@ import {
 import { FC, useRef } from "react";
 import { formatNumber } from "~/core/formatting";
 import { EditorFormData, PlacementData } from "~/types/query";
-import { PaddedPaper } from "./PaddedPaper";
+import { PaddedPaper } from "../surfaces/PaddedPaper";
 type PlacementInfoProps = {
   placement: PlacementData;
 };

@@ -4,7 +4,7 @@ import { FC, SyntheticEvent } from "react";
 import { toIconURL } from "~/assets/icon";
 import { EditorFormData, EditorFormHandlers } from "~/types/query";
 import { PaddedPaper } from "./PaddedPaper";
-import { StyledTextField } from "./StyledTextField";
+import { StyledTextField } from "./styled/StyledTextField";
 
 type ComputeFormProps = {
   data: EditorFormData;
